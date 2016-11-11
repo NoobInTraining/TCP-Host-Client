@@ -28,7 +28,8 @@ namespace ConsoleApplication1
         /// Method to start the server
         /// </summary>
         public void startServer()
-        {            
+        {
+            socketHost.Start();
             bool runServer = true;
 
             //While we shall accept incomming requests
@@ -41,6 +42,7 @@ namespace ConsoleApplication1
                     //set the streams
                     StreamReader clientIn = new StreamReader(client.GetStream());
                     StreamWriter clientOut = new StreamWriter(client.GetStream());
+                    clientOut.AutoFlush = true;
 
                     //Communicate with client
                     bool clientCommunicate = true;
@@ -68,7 +70,7 @@ namespace ConsoleApplication1
                         }
                     }
                 }
-                catch(Exception)
+                catch(Exception ex )
                 {
                     //Log the error or handle it in any other way you want.
                 }

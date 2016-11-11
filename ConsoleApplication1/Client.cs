@@ -21,7 +21,11 @@ namespace ConsoleApplication1
         /// <param name="iPort">The Port on which the host is lsitning</param>
         public Client(string host, int iPort)
         {
+            //conenct and set the streams
             client = new TcpClient(host, iPort);
+            clientIn = new StreamReader(client.GetStream());
+            clientOut = new StreamWriter(client.GetStream());
+            clientOut.AutoFlush = true;
         }
 
         /// <summary>
