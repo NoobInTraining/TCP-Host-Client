@@ -11,6 +11,9 @@ namespace ConsoleApplication1
 {
     class Host
     {
+
+        private TcpListener socketHost;
+
         /// <summary>
         /// Konstruktor that starts the server
         /// </summary>
@@ -18,7 +21,14 @@ namespace ConsoleApplication1
         public Host(int iPort)
         {
             //The Socket which defines the port where it will listen
-            var socketHost = new TcpListener(IPAddress.Any, iPort);
+            socketHost = new TcpListener(IPAddress.Any, iPort);
+        }
+
+        /// <summary>
+        /// Method to start the server
+        /// </summary>
+        public void startServer()
+        {            
             bool runServer = true;
 
             //While we shall accept incomming requests
