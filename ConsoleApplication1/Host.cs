@@ -51,11 +51,16 @@ namespace ConsoleApplication1
                         switch(clientCommand)
                         {
                             case "stop server":
+                                clientOut.WriteLine("Stopping server");
                                 runServer = false;
                                 clientCommunicate = false;
+                                //dont need to close anything cause right now server will end and run out of scope
                                 break;
                             case "stop communication":
+                                clientOut.WriteLine("Stopping communication");
                                 clientCommunicate = false;
+                                //don't need to clsoe this end, because it would run out of scope anyway but...
+                                client.Close();
                                 break;
                             default:
                                 clientOut.WriteLine("Didn't recive valid command!");
